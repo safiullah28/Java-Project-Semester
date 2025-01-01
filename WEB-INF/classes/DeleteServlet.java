@@ -62,6 +62,7 @@ public class DeleteServlet extends HttpServlet {
       return;
     }
     String role = (String)session.getAttribute("role");
+    String adminAccountNumber = (String)session.getAttribute("accountNumber");
     if ("admin".equals(role)) {
 
       String accountNumber = request.getParameter("accountNumber");
@@ -71,29 +72,35 @@ public class DeleteServlet extends HttpServlet {
             LoginServlet.getActiveSessions();
         HttpSession userSession = activeSessions.get(accountNumber);
 
-        if (userSession != null) {
-          userSession.invalidate();
-          activeSessions.remove(accountNumber);
-        }
+        if (!accountNumber.equals(adminAccountNumber)) {
 
-        Class.forName("com.mysql.jdbc.Driver");
-        String url = "jdbc:mysql://127.0.0.1:3306/address-book";
-        Connection conn = DriverManager.getConnection(url, "root", "root");
-        Statement stmt = conn.createStatement();
+          if (userSession != null) {
+            userSession.invalidate();
+            activeSessions.remove(accountNumber);
+          }
 
-        String query = "DELETE FROM accounts WHERE account_number = '" +
-                       accountNumber + "'";
-        int rowsAffected = stmt.executeUpdate(query);
+          Class.forName("com.mysql.jdbc.Driver");
+          String url = "jdbc:mysql://127.0.0.1:3306/address-book";
+          Connection conn = DriverManager.getConnection(url, "root", "root");
+          Statement stmt = conn.createStatement();
 
-        conn.close();
+          String query = "DELETE FROM accounts WHERE account_number = '" +
+                         accountNumber + "'";
+          int rowsAffected = stmt.executeUpdate(query);
 
-        if (rowsAffected > 0) {
-          response.sendRedirect(
-              "AdminDashboardServlet?message=Account deleted successfully");
+          conn.close();
+
+          if (rowsAffected > 0) {
+            response.sendRedirect(
+                "AdminDashboardServlet?message=Account deleted successfully");
+          } else {
+            response.sendRedirect(
+                "DeleteUser.html?error=Account deletion failed");
+          }
         } else {
-          response.sendRedirect(
-              "DeleteUser.html?error=Account deletion failed");
+          response.sendRedirect("DeleteUser.html?error=Admin can't be deleted");
         }
+
       } catch (Exception e) {
         e.printStackTrace();
         out.println("Error: " + e.getMessage());
