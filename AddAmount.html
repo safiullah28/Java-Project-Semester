@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Amount</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="number"],
+        input[type="submit"] {
+            margin: 5px 0;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Add Amount</h1>
+    <form action="AddAmountServlet" method="post">
+        Enter Amount:
+        <input type="number" name="amount" step="0.01" required>
+        <br><br>
+        <input type="submit" value="Add Amount">
+    </form>
+    <a href="UserDashboardServlet">Back to Dashboard</a>
+</body>
+
+</html>

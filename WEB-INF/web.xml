@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+
+	<servlet>
+		<servlet-name>AdminDashboardServlet</servlet-name>
+		<servlet-class>AdminDashboardServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminDashboardServlet</servlet-name>
+		<url-pattern>/AdminDashboardServlet</url-pattern>
+	</servlet-mapping>
+
+
+
+	<servlet>
+		<servlet-name>CreateAccountServlet</servlet-name>
+		<servlet-class>CreateAccountServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateAccountServlet</servlet-name>
+		<url-pattern>/CreateAccountServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/LoginServlet</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>UpdatePinServlet</servlet-name>
+		<servlet-class>UpdatePinServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdatePinServlet</servlet-name>
+		<url-pattern>/UpdatePinServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserDashboardServlet</servlet-name>
+		<servlet-class>UserDashboardServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserDashboardServlet</servlet-name>
+		<url-pattern>/UserDashboardServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LogOutServlet</servlet-name>
+		<servlet-class>LogOutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogOutServlet</servlet-name>
+		<url-pattern>/LogOutServlet</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>TransactionServlet</servlet-name>
+		<servlet-class>TransactionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TransactionServlet</servlet-name>
+		<url-pattern>/TransactionServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ChangeUserPinServlet</servlet-name>
+		<servlet-class>ChangeUserPinServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChangeUserPinServlet</servlet-name>
+		<url-pattern>/ChangeUserPinServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AddAmountServlet</servlet-name>
+		<servlet-class>AddAmountServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddAmountServlet</servlet-name>
+		<url-pattern>/AddAmountServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>WithDrawAmountServlet</servlet-name>
+		<servlet-class>WithDrawAmountServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WithDrawAmountServlet</servlet-name>
+		<url-pattern>/WithDrawAmountServlet</url-pattern>
+	</servlet-mapping>
+
+</web-app>
