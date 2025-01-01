@@ -69,14 +69,7 @@
 		<url-pattern>/TransactionServlet</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>ChangeUserPinServlet</servlet-name>
-		<servlet-class>ChangeUserPinServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ChangeUserPinServlet</servlet-name>
-		<url-pattern>/ChangeUserPinServlet</url-pattern>
-	</servlet-mapping>
+
 
 	<servlet>
 		<servlet-name>AddAmountServlet</servlet-name>
@@ -94,6 +87,15 @@
 	<servlet-mapping>
 		<servlet-name>WithDrawAmountServlet</servlet-name>
 		<url-pattern>/WithDrawAmountServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DeleteServlet</servlet-name>
+		<servlet-class>DeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteServlet</servlet-name>
+		<url-pattern>/DeleteServlet</url-pattern>
 	</servlet-mapping>
 
 </web-app>

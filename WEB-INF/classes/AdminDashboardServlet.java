@@ -26,30 +26,7 @@ public class AdminDashboardServlet extends HttpServlet {
           "SELECT account_number, balance FROM accounts WHERE role = 'user'";
       ResultSet rs = stmt.executeQuery(query);
 
-      // out.println("<!DOCTYPE html>");
-      // out.println("<html lang='en'>");
-      // out.println("<head><title>Admin Dashboard</title></head>");
-      // out.println("<body>");
-      // out.println("<h1>Admin Dashboard</h1>");
-      // out.println("<table border='1'>");
-      // out.println("<tr><th>Account Number</th><th>Balance</th></tr>");
-
-      // while (rs.next()) {
-      //   String accountnumb = rs.getString("account_number");
-
-      //   Double amount = rs.getDouble("balance");
-      //   out.println("<tr>");
-      //   out.println("<td>" + accountnumb + "</td>");
-      //   out.println("<td>" + amount + "</td>");
-      //   out.println("</tr>");
-      // }
-
-      // out.println("</table>");
-      // out.println("<a href='UpdatePin.html'>Change PIN</a><br>");
-      // out.println("<a href='changePinbyadmin.html'>Change User PIN</a><br>");
-      // out.println("<a href='LogOutServlet'>Logout</a>");
-      // out.println("</body>");
-      // out.println("</html>");
+      out.println("<!DOCTYPE html>");
 
       out.println("<html lang='en'>");
       out.println("<head>");
@@ -84,6 +61,7 @@ public class AdminDashboardServlet extends HttpServlet {
           "<a href='createAccountByAdmin.html'>Create New User's Account</a><br>");
 
       out.println("<a href='changePinbyadmin.html'>Change User PIN</a><br>");
+      out.println("<a href='DeleteUser.html'>Delete User</a><br>");
       out.println("<a href='LogOutServlet'>Logout</a>");
       out.println("</body>");
       out.println("</html>");

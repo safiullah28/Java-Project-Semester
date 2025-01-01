@@ -1,12 +1,18 @@
 import java.io.*;
 import java.sql.*;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
+
 public class LoginServlet extends HttpServlet {
 
+  private static final Map<String, HttpSession> activeSessions =
+      new ConcurrentHashMap<>();
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+
     PrintWriter out = response.getWriter();
     String accountNumber = request.getParameter("accountNumber");
     String pin = request.getParameter("pin");
@@ -27,6 +33,7 @@ public class LoginServlet extends HttpServlet {
         String role = rs.getString("role");
         session.setAttribute("role", role);
         session.setAttribute("balance", rs.getDouble("balance"));
+        activeSessions.put(accountNumber, session);
 
         if (role.equals("admin")) {
           response.sendRedirect("AdminDashboardServlet");
@@ -43,5 +50,8 @@ public class LoginServlet extends HttpServlet {
 
       out.println(e.getMessage());
     }
+  }
+  public static Map<String, HttpSession> getActiveSessions() {
+    return activeSessions;
   }
 }

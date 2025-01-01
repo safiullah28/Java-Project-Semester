@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
@@ -63,9 +62,11 @@ public class UserDashboardServlet extends HttpServlet {
     out.println("<p>Balance: <strong>" + balance + "</strong></p>");
     out.println("<a href='Transaction.html'>Send Amount</a>");
     out.println("<a href='WithDrawAmount.html'>WithDraw Amount</a>");
+
     out.println("<a href='AddAmount.html'>Add Amount</a>");
     out.println("<a href='UpdatePin.html'>Change PIN</a>");
     out.println("<a href='LogOutServlet'>Logout</a>");
+    out.println("<br><a href='DeleteServlet'>Delete Account</a>");
     out.println("</body>");
     out.println("</html>");
     out.close();
