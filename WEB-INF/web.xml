@@ -98,4 +98,13 @@
 		<url-pattern>/DeleteServlet</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>ChangeUserPinServlet</servlet-name>
+		<servlet-class>ChangeUserPinServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChangeUserPinServlet</servlet-name>
+		<url-pattern>/ChangeUserPinServlet</url-pattern>
+	</servlet-mapping>
+
 </web-app>
