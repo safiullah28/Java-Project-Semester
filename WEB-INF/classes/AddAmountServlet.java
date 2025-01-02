@@ -9,13 +9,14 @@ public class AddAmountServlet extends HttpServlet {
       throws ServletException, IOException {
     PrintWriter out = response.getWriter();
     HttpSession session = request.getSession(false);
-    if (session == null || session.getAttribute("accountNumber") == null) {
+    if (session == null || session.getAttribute("accountDetails") == null) {
       response.sendRedirect("Login.html");
       return;
     }
 
-    String accountNumber = (String)session.getAttribute("accountNumber");
-    double balance = (double)session.getAttribute("balance");
+    Account account = (Account)session.getAttribute("accountDetails");
+    String accountNumber = account.account_number;
+    double balance = account.balance;
 
     String amountt = request.getParameter("amount");
     double amount = 0.0;
@@ -39,18 +40,14 @@ public class AddAmountServlet extends HttpServlet {
     }
 
     try {
-      Class.forName("com.mysql.jdbc.Driver");
-      String url = "jdbc:mysql://127.0.0.1/address-book";
-      Connection conn = DriverManager.getConnection(url, "root", "root");
 
-      Statement stmt = conn.createStatement();
-      String updateQuery = "UPDATE accounts SET balance = balance + " + amount +
-                           " WHERE account_number = '" + accountNumber + "'";
-
-      int rss = stmt.executeUpdate(updateQuery);
-      if (rss > 0) {
+      AccountDAO accountDAO = new AccountDAO();
+      boolean balanceAdded = accountDAO.addBalance(accountNumber, amount);
+      if (balanceAdded) {
         balance += amount;
-        session.setAttribute("balance", balance);
+
+        account.balance = balance;
+        session.setAttribute("accountDetails", account);
 
         out.println("<html lang='en'>");
         out.println("<head>");
@@ -71,12 +68,11 @@ public class AddAmountServlet extends HttpServlet {
         out.println("<a href='UserDashboardServlet'>Back to Dashboard</a>");
         out.println("</body>");
         out.println("</html>");
-
       } else {
         response.sendRedirect("AddAmount.html?error=Error in adding amount.");
       }
 
-      conn.close();
+      accountDAO.close();
       out.close();
     } catch (Exception e) {
       e.printStackTrace();
